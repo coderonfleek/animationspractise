@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scaling</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <style>
+        /* 
+
+            scale(decimal ratio), scale(x_ratio, y_ratio):
+            affects the size of the element. 
+            This also applies to the font-size, padding, height, and width of an element, too. 
+            It’s also a a shorthand function for the scaleX and scaleY functions.
+
+            NB: Values can be negative (a value of -1 mirrors the shape in the direction specified)
+            ---------------------
+            scale3d() and scaleZ()
+            The third value in scale3d or the value in scaleZ affects the scaling 
+            along the z-axis (e.g. the imaginary line coming straight out of the screen).
+        
+         */
+
+        .box {
+            width: 200px;
+            height: 250px;
+            background-color: blue;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 250px;
+            background-color: red;
+            color: white;
+            margin-bottom: 20px;
+            position: absolute
+        }
+
+        .col-md-4 .thumbnail {
+            background-color: #000;
+            position: relative
+        }
+
+        #scaleProportional {
+            transform: scale(0.5);
+        }
+
+        #scaleX {
+            transform: scaleX(0.7)
+        }
+
+        #scaleY {
+            transform: scaleY(0.6)
+        }
+
+        #scale3d {
+            transform: scale3d(1, 1.2, 1.5);
+        }
+
+        #mirroredScaling {
+            transform: scaleX(-1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="box2">0.5 Scaling</div>
+                    <div id="scaleProportional" class="box">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="box2"></div>
+                    <div id="scaleX" class="box">
+                        0.7 X-Scaling
+                    </div>
+                    <!-- scaleX -->
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="box2">0.6 Y-Scaling</div>
+                    <div id="scaleY" class="box">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            &nbsp;
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box2"></div>
+                <div class="thumbnail">
+                    <div id="scale3d" class="box">
+                        3D Scaling
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box2"></div>
+                <div class="thumbnail">
+                    <div id="mirroredScaling" class="box">
+                        Mirror Scaling
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+</body>
+
+</html>

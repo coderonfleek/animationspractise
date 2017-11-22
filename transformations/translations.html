@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Translations</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <style>
+        /* 
+            Transform functions: Translate
+            
+            translate(x_axis_offset, y_axis_offset) :
+            method moves an element from its current position 
+            (according to the parameters given for the X-axis and the Y-axis)
+            NB: The initial position of the box is maintained in the DOM so the elements around it do not reflow
+
+            translateX(x);
+            translateY(y);
+
+            3D Translations-
+            translate3d(x, y, z), translateZ(z):
+            The third value in translate3d or the value in translateZ 
+            moves the element toward the viewer, negative values away.
+            ---------------------
+            
+
+            skewX()
+            skewY()
+            matrix()
+
+            Syntax:
+            transform: function(args...)
+         */
+
+        .box {
+            width: 200px;
+            height: 250px;
+            background-color: blue;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 250px;
+            background-color: red;
+            color: white;
+            margin-bottom: 20px;
+            position: absolute
+        }
+
+        .col-md-4 .thumbnail {
+            background-color: #000;
+            position: relative
+        }
+
+        #translatedBox {
+            transform: translate(120px, 50px);
+        }
+
+        #translateX {
+            transform: translateX(100px)
+        }
+
+        #translateY {
+            transform: translateY(150px)
+        }
+
+        #translate3d {
+            transform: translate3d(20px, 20px, 20px)
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="translatedBox" class="box">
+                        XY Translated Box
+                    </div>
+                </div>
+
+                <!-- translatedBox -->
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="translateX" class="box">
+                        X Translation
+                    </div>
+                </div>
+
+                <!-- translateX -->
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="translateY" class="box">
+                        Y Translation
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            &nbsp;
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="box2"></div>
+                    <div id="translate3d" class="box">
+                        3d Translation
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

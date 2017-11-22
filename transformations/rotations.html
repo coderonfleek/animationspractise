@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rotations</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <style>
+        /* 
+
+            rotate(degrees):
+            rotates the element clockwise from its current position. 
+            ---------------------
+            rotate3d(x,y,z,angle)
+            The first three values set the direction of the rotation on the x, y, and z axes; 
+            the fourth value sets the rotation angle. 
+
+            Changing a value from 0 to 1 lets the browser know that you want to 
+            rotate the element on that particular axis. 
+
+            rotate3d() makes working with 3D rotations convenient because you can 
+            efficiently set multiple rotations with one function.
+        
+         */
+
+        .box {
+            width: 200px;
+            height: 250px;
+            background-color: blue;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 250px;
+            background-color: red;
+            color: white;
+            margin-bottom: 20px;
+            position: absolute
+        }
+
+        .col-md-4 .thumbnail {
+            background-color: #000;
+            position: relative
+        }
+
+        #scaleProportional {
+            transform: scale(0.5);
+        }
+
+        #rotateClockwise {
+            transform: rotate(60deg)
+        }
+
+        #rotateAntiClockwise {
+            transform: rotate(-50deg)
+        }
+
+        #rotateX {
+            transform: rotateX(60deg);
+        }
+
+        #rotateY {
+            transform: rotateY(180deg);
+        }
+
+        #rotateZ {
+            transform: rotateZ(180deg);
+        }
+
+        #rotate3d:hover {
+            transform: rotate3d(1, 0, 1, 45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="box2"></div>
+                    <div id="rotateClockwise" class="box">
+                        Clockwise Rotation
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="box2"></div>
+                    <div id="rotateAntiClockwise" class="box">
+                        Anti-Clockwise Rotation
+                    </div>
+                    <!-- scaleX -->
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="box2">X Rotation</div>
+                    <div id="rotateX" class="box">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            &nbsp;
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box2"></div>
+                <div class="thumbnail">
+                    <div id="rotateY" class="box">
+                        Y Rotation
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box2"></div>
+                <div class="thumbnail">
+                    <div id="rotateZ" class="box">
+                        Z Rotation
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-4">
+                    <div class="box2"></div>
+                    <div class="thumbnail">
+                        <div id="rotate3d" class="box">
+                            3D Rotation
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
