@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Transitions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <style>
+        /*
+            transition: property duration timing-function delay;
+            Smoothly animates a property change (e.g. on :hover) instead of snapping.
+            Hover over each box to see the effect.
+        */
+
+        .box {
+            width: 200px;
+            height: 150px;
+            background-color: blue;
+            color: white;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #colorFade {
+            transition: background-color 1s ease;
+        }
+        #colorFade:hover {
+            background-color: crimson;
+        }
+
+        #grow {
+            transition: width 0.6s ease-in-out, height 0.6s ease-in-out;
+        }
+        #grow:hover {
+            width: 260px;
+            height: 190px;
+        }
+
+        #radius {
+            transition: border-radius 0.8s linear;
+        }
+        #radius:hover {
+            border-radius: 50%;
+        }
+
+        #fadeOut {
+            transition: opacity 0.8s ease-out;
+        }
+        #fadeOut:hover {
+            opacity: 0.2;
+        }
+
+        #steps {
+            transition: transform 1s steps(5, end);
+        }
+        #steps:hover {
+            transform: translateX(40px);
+        }
+
+        #delay {
+            transition: background-color 0.5s ease 0.7s;
+        }
+        #delay:hover {
+            background-color: seagreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hover Transitions</h1>
+        <div class="row">
+            <div class="col-md-4"><div class="thumbnail"><div class="box" id="colorFade">Color fade</div></div></div>
+            <div class="col-md-4"><div class="thumbnail"><div class="box" id="grow">Grow (ease-in-out)</div></div></div>
+            <div class="col-md-4"><div class="thumbnail"><div class="box" id="radius">Border radius (linear)</div></div></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"><div class="thumbnail"><div class="box" id="fadeOut">Opacity</div></div></div>
+            <div class="col-md-4"><div class="thumbnail"><div class="box" id="steps">steps(5)</div></div></div>
+            <div class="col-md-4"><div class="thumbnail"><div class="box" id="delay">0.7s delay</div></div></div>
+        </div>
+    </div>
+</body>
+
+</html>
