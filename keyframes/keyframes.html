@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyframes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <style>
+        /*
+
+            @keyframes name { from {...} to {...} }
+            Defines the stages of an animation. Percentages can be used for
+            multi-step animations (0%, 50%, 100%).
+
+            animation shorthand:
+            name duration timing-function delay iteration-count direction fill-mode
+
+            animation-iteration-count: number or infinite
+            animation-direction: normal | reverse | alternate | alternate-reverse
+            animation-fill-mode: none | forwards | backwards | both
+
+         */
+
+        .stage {
+            background-color: #000;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .box {
+            width: 60px;
+            height: 60px;
+            background-color: dodgerblue;
+            position: absolute;
+            top: 70px;
+            left: 10px;
+        }
+
+        /* Simple from/to with alternate direction */
+        @keyframes slide {
+            from { left: 10px; }
+            to { left: calc(100% - 70px); }
+        }
+
+        #slide {
+            animation: slide 2s ease-in-out infinite alternate;
+        }
+
+        /* Multi-step percentages */
+        @keyframes colorShift {
+            0% { background-color: red; transform: rotate(0deg); }
+            33% { background-color: gold; transform: rotate(120deg); }
+            66% { background-color: limegreen; transform: rotate(240deg); }
+            100% { background-color: red; transform: rotate(360deg); }
+        }
+
+        #multi {
+            left: calc(50% - 30px);
+            animation: colorShift 4s linear infinite;
+        }
+
+        /* Bounce with different timing per segment */
+        @keyframes bounce {
+            0%, 100% { top: 130px; animation-timing-function: ease-out; }
+            50% { top: 10px; animation-timing-function: ease-in; }
+        }
+
+        #bounce {
+            left: calc(50% - 30px);
+            border-radius: 50%;
+            background-color: orange;
+            animation: bounce 1s infinite;
+        }
+
+        /* Pulse */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: .4; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        #pulse {
+            left: calc(50% - 30px);
+            border-radius: 50%;
+            background-color: hotpink;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        /* fill-mode: forwards keeps the end state; runs only once */
+        @keyframes grow {
+            from { width: 60px; background-color: dodgerblue; }
+            to { width: 80%; background-color: purple; }
+        }
+
+        #fill {
+            animation: grow 2s ease forwards;
+        }
+
+        #fill.paused,
+        .stage:hover #hoverPause {
+            animation-play-state: paused;
+        }
+
+        /* Shake */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-15px); }
+            40%, 80% { transform: translateX(15px); }
+        }
+
+        #shake {
+            left: calc(50% - 30px);
+            background-color: crimson;
+            animation: shake .6s ease-in-out infinite;
+        }
+
+        /* Pause on hover */
+        #hoverPause {
+            left: calc(50% - 30px);
+            background-color: teal;
+            animation: colorShift 3s linear infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Keyframe Animations</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="stage"><div class="box" id="slide"></div></div>
+                    <div class="caption"><p>from / to, alternate</p></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="stage"><div class="box" id="multi"></div></div>
+                    <div class="caption"><p>Multi-step percentages</p></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="stage"><div class="box" id="bounce"></div></div>
+                    <div class="caption"><p>Bounce (per-keyframe timing)</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="stage"><div class="box" id="pulse"></div></div>
+                    <div class="caption"><p>Pulse</p></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="stage"><div class="box" id="fill"></div></div>
+                    <div class="caption"><p>fill-mode: forwards (plays once)</p></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="stage"><div class="box" id="shake"></div></div>
+                    <div class="caption"><p>Shake</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="stage"><div class="box" id="hoverPause"></div></div>
+                    <div class="caption"><p>animation-play-state: paused on hover</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
