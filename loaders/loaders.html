@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loaders</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <style>
+        /*
+
+            Loaders are built from infinitely looping @keyframes animations.
+
+            animation: name duration timing-function delay iteration-count;
+            Staggering animation-delay across siblings creates wave effects.
+
+         */
+
+        .demo {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        /* 1. Spinner: rotating ring */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 6px solid #ddd;
+            border-top-color: blue;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 2. Pulse: expanding, fading circle */
+        .pulse {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            border-radius: 50%;
+            animation: pulse 1.2s ease-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.3);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* 3. Bouncing dots with staggered delays */
+        .dots span {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin: 0 4px;
+            background-color: blue;
+            border-radius: 50%;
+            animation: bounce 0.8s ease-in-out infinite alternate;
+        }
+
+        .dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            to {
+                transform: translateY(-30px);
+            }
+        }
+
+        /* 4. Equalizer bars */
+        .bars {
+            align-items: flex-end;
+        }
+
+        .bars span {
+            display: inline-block;
+            width: 10px;
+            height: 50px;
+            margin: 0 3px;
+            background-color: blue;
+            transform-origin: bottom;
+            animation: bar 1s ease-in-out infinite;
+        }
+
+        .bars span:nth-child(2) { animation-delay: 0.1s; }
+        .bars span:nth-child(3) { animation-delay: 0.2s; }
+        .bars span:nth-child(4) { animation-delay: 0.3s; }
+        .bars span:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes bar {
+            0%, 100% {
+                transform: scaleY(0.2);
+            }
+
+            50% {
+                transform: scaleY(1);
+            }
+        }
+
+        /* 5. Progress bar with a sliding highlight */
+        .progress-track {
+            width: 200px;
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-track div {
+            width: 40%;
+            height: 100%;
+            background-color: blue;
+            border-radius: 5px;
+            animation: slide 1.4s ease-in-out infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(250%);
+            }
+        }
+
+        /* 6. Flip square: rotateX / rotateY in 3D */
+        .flip {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            animation: flip 1.6s ease-in-out infinite;
+        }
+
+        @keyframes flip {
+            0% {
+                transform: perspective(120px) rotateX(0) rotateY(0);
+            }
+
+            50% {
+                transform: perspective(120px) rotateX(-180deg) rotateY(0);
+            }
+
+            100% {
+                transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Loaders</h2>
+        <p>Infinite looping keyframe animations.</p>
+        <div class="row">
+            <div class="col-md-4 text-center"><h4>Spinner</h4><div class="demo"><div class="spinner"></div></div></div>
+            <div class="col-md-4 text-center"><h4>Pulse</h4><div class="demo"><div class="pulse"></div></div></div>
+            <div class="col-md-4 text-center"><h4>Bouncing dots</h4><div class="demo dots"><span></span><span></span><span></span></div></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-center"><h4>Equalizer bars</h4><div class="demo bars"><span></span><span></span><span></span><span></span><span></span></div></div>
+            <div class="col-md-4 text-center"><h4>Progress bar</h4><div class="demo"><div class="progress-track"><div></div></div></div></div>
+            <div class="col-md-4 text-center"><h4>Flip square</h4><div class="demo"><div class="flip"></div></div></div>
+        </div>
+    </div>
+</body>
+
+</html>
