@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transitions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <style>
+        /*
+
+            transition: property duration timing-function delay;
+            Smoothly animates a property from its current value to a new
+            value when the state changes (e.g. on :hover).
+
+            Hover over each box to see the transition.
+
+            Timing functions: ease, linear, ease-in, ease-out, ease-in-out,
+            cubic-bezier(), steps()
+
+         */
+
+        .box {
+            width: 200px;
+            height: 250px;
+            background-color: blue;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .col-md-4 .thumbnail {
+            background-color: #000;
+            position: relative;
+            perspective: 800px
+        }
+
+        /* Colour change over 1s */
+        #colorChange {
+            transition: background-color 1s;
+        }
+
+        #colorChange:hover {
+            background-color: orange;
+        }
+
+        /* Width grows with a linear timing function */
+        #sizeChange {
+            transition: width 1.5s linear;
+        }
+
+        #sizeChange:hover {
+            width: 100%;
+        }
+
+        /* Move and rotate with ease-in-out */
+        #moveRotate {
+            transition: transform 1s ease-in-out;
+        }
+
+        #moveRotate:hover {
+            transform: translateX(40px) rotate(20deg);
+        }
+
+        /* Opacity fade with a delay */
+        #fadeDelay {
+            transition: opacity 1s ease 0.5s;
+        }
+
+        #fadeDelay:hover {
+            opacity: 0.2;
+        }
+
+        /* Stepped transition */
+        #steps {
+            transition: height 2s steps(5);
+        }
+
+        #steps:hover {
+            height: 100px;
+        }
+
+        /* Multiple properties with different durations and a bouncy curve */
+        #multiple {
+            transition: background-color 0.5s ease,
+                border-radius 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        #multiple:hover {
+            background-color: green;
+            border-radius: 50%;
+            transform: scale(0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="colorChange" class="box">
+                        Colour Change
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="sizeChange" class="box">
+                        Linear Width
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="moveRotate" class="box">
+                        Move &amp; Rotate (ease-in-out)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            &nbsp;
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="fadeDelay" class="box">
+                        Fade with Delay
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="steps" class="box">
+                        Steps
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="multiple" class="box">
+                        Multiple Properties
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
