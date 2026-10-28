@@ -10,104 +10,81 @@
         crossorigin="anonymous">
 
     <style>
-        /* 
+        /*
 
             transition: property duration timing-function delay;
-            Animates the change of a CSS property between two states
-            (e.g. normal -> :hover) instead of switching instantly.
+            Smoothly animates a property change (e.g. on :hover) instead of
+            switching instantly. Hover over each box to see the effect.
 
-            ---------------------
-            transition-property: which property to animate (or all)
-            transition-duration: how long the change takes
-            transition-timing-function: the speed curve 
-                (ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier(), steps())
-            transition-delay: wait before the change starts
+            Timing functions: ease, linear, ease-in, ease-out, ease-in-out,
+            cubic-bezier(), steps().
 
-            Hover over each box to see the transition.
-        
          */
 
-        .box {
-            width: 200px;
-            height: 250px;
-            background-color: blue;
-            color: white;
-            margin-bottom: 20px;
+        .thumbnail {
+            background-color: #000;
+            padding: 20px;
+            height: 160px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .col-md-4 .thumbnail {
-            background-color: #000;
-            position: relative;
+        .label-text {
+            color: #fff;
+            margin: 0 0 10px;
         }
+
+        .box {
+            width: 80px;
+            height: 80px;
+            background-color: blue;
+            color: white;
+        }
+
+        /* Same movement, different timing functions */
+        .move {
+            transition-property: transform;
+            transition-duration: 2s;
+        }
+
+        .thumbnail:hover .move {
+            transform: translateX(150px);
+        }
+
+        #linear { transition-timing-function: linear; }
+        #easeIn { transition-timing-function: ease-in; }
+        #easeOut { transition-timing-function: ease-out; }
+        #bezier { transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55); }
+        #steps { transition-timing-function: steps(5, end); }
 
         /* Colour change */
         #color {
-            transition: background-color 1s;
+            transition: background-color 1s ease;
         }
 
-        #color:hover {
+        .thumbnail:hover #color {
             background-color: orange;
         }
 
-        /* Size change */
-        #size {
-            transition: width 1s, height 1s;
-        }
-
-        #size:hover {
-            width: 100%;
-            height: 150px;
-        }
-
-        /* Timing functions: same move, different speed curves */
-        #linear,
-        #easeIn {
-            height: 60px;
-            margin-bottom: 10px;
-            transition: transform 2s;
-        }
-
-        #linear {
-            transition-timing-function: linear;
-        }
-
-        #easeIn {
-            background-color: red;
-            transition-timing-function: ease-in;
-        }
-
-        .thumbnail:hover #linear,
-        .thumbnail:hover #easeIn {
-            transform: translateX(80px);
-        }
-
-        /* Delay */
-        #delay {
-            transition: transform 0.5s ease-out 1s;
-        }
-
-        #delay:hover {
-            transform: rotate(45deg);
-        }
-
-        /* Steps: jumps in discrete frames instead of smoothly */
-        #steps {
-            transition: transform 2s steps(5);
-        }
-
-        #steps:hover {
-            transform: translateX(80px);
-        }
-
-        /* Multiple properties with different durations */
+        /* Multiple properties with different durations and delay */
         #multi {
-            transition: transform 0.3s, background-color 1.5s, border-radius 1s;
+            transition: width 1s, height 2s, border-radius 1s 0.5s, background-color 1.5s;
         }
 
-        #multi:hover {
-            transform: scale(0.8) rotate(10deg);
-            background-color: green;
+        .thumbnail:hover #multi {
+            width: 150px;
+            height: 100px;
             border-radius: 50%;
+            background-color: green;
+        }
+
+        /* Opacity fade */
+        #fade {
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .thumbnail:hover #fade {
+            opacity: 0.1;
         }
     </style>
 </head>
@@ -117,24 +94,20 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <div id="color" class="box">
-                        Colour Transition
-                    </div>
+                    <p class="label-text">linear</p>
+                    <div id="linear" class="box move"></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <div id="size" class="box">
-                        Size Transition
-                    </div>
+                    <p class="label-text">ease-in</p>
+                    <div id="easeIn" class="box move"></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <div class="box" style="height: 250px; background: none;">
-                        <div id="linear" class="box">Linear</div>
-                        <div id="easeIn" class="box">Ease-in</div>
-                    </div>
+                    <p class="label-text">ease-out</p>
+                    <div id="easeOut" class="box move"></div>
                 </div>
             </div>
         </div>
@@ -146,23 +119,39 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <div id="delay" class="box">
-                        Delayed Transition
-                    </div>
+                    <p class="label-text">cubic-bezier (overshoot)</p>
+                    <div id="bezier" class="box move"></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <div id="steps" class="box">
-                        Steps Timing
-                    </div>
+                    <p class="label-text">steps(5)</p>
+                    <div id="steps" class="box move"></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <div id="multi" class="box">
-                        Multiple Properties
-                    </div>
+                    <p class="label-text">Colour change</p>
+                    <div id="color" class="box"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            &nbsp;
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <p class="label-text">Multiple properties</p>
+                    <div id="multi" class="box"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <p class="label-text">Fade</p>
+                    <div id="fade" class="box"></div>
                 </div>
             </div>
         </div>
