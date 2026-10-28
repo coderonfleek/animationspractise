@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transition Timing Functions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <style>
+        /*
+
+            transition: property duration timing-function delay;
+            Smoothly interpolates a property between two states (e.g. normal -> :hover)
+            instead of snapping instantly.
+
+            Timing functions:
+            linear, ease (default), ease-in, ease-out, ease-in-out,
+            cubic-bezier(x1, y1, x2, y2) and steps(n, jump-term).
+
+            Hover over a track (or click "Replay") to see how each function
+            moves the box over the same 2s duration.
+
+         */
+
+        .track {
+            position: relative;
+            height: 60px;
+            margin-bottom: 20px;
+            background-color: #000;
+            border-radius: 4px;
+        }
+
+        .track span.label {
+            position: absolute;
+            right: 10px;
+            top: 20px;
+            color: #888;
+            font-family: monospace;
+        }
+
+        .runner {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: blue;
+            transition-property: left, background-color, transform;
+            transition-duration: 2s;
+        }
+
+        .go .runner {
+            left: calc(100% - 50px);
+            background-color: red;
+            transform: rotate(180deg);
+        }
+
+        #linear .runner {
+            transition-timing-function: linear;
+        }
+
+        #ease .runner {
+            transition-timing-function: ease;
+        }
+
+        #easeIn .runner {
+            transition-timing-function: ease-in;
+        }
+
+        #easeOut .runner {
+            transition-timing-function: ease-out;
+        }
+
+        #easeInOut .runner {
+            transition-timing-function: ease-in-out;
+        }
+
+        #bounce .runner {
+            transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        #steps .runner {
+            transition-timing-function: steps(5, end);
+        }
+
+        .delayed .runner {
+            transition-delay: 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Transition timing functions</h3>
+        <p>
+            <button id="replay" class="btn btn-primary">Toggle all</button>
+        </p>
+
+        <div id="linear" class="track"><div class="runner"></div><span class="label">linear</span></div>
+        <div id="ease" class="track"><div class="runner"></div><span class="label">ease</span></div>
+        <div id="easeIn" class="track"><div class="runner"></div><span class="label">ease-in</span></div>
+        <div id="easeOut" class="track"><div class="runner"></div><span class="label">ease-out</span></div>
+        <div id="easeInOut" class="track"><div class="runner"></div><span class="label">ease-in-out</span></div>
+        <div id="bounce" class="track"><div class="runner"></div><span class="label">cubic-bezier(0.68, -0.55, 0.27, 1.55)</span></div>
+        <div id="steps" class="track"><div class="runner"></div><span class="label">steps(5, end)</span></div>
+        <div id="delayed" class="track delayed"><div class="runner"></div><span class="label">ease + 0.5s delay</span></div>
+    </div>
+
+    <script>
+        var tracks = document.querySelectorAll('.track');
+
+        // Hover a single track to run it
+        Array.prototype.forEach.call(tracks, function (t) {
+            t.addEventListener('mouseenter', function () { t.classList.add('go'); });
+            t.addEventListener('mouseleave', function () { t.classList.remove('go'); });
+        });
+
+        // Toggle all tracks together to compare them side by side
+        document.getElementById('replay').addEventListener('click', function () {
+            Array.prototype.forEach.call(tracks, function (t) { t.classList.toggle('go'); });
+        });
+    </script>
+</body>
+
+</html>
