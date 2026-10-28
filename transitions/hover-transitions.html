@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Transitions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <style>
+        /*
+
+            transition: property duration timing-function delay;
+            Smoothly animates a property change between two states
+            (here triggered by :hover) instead of switching instantly.
+
+            Timing functions: ease, linear, ease-in, ease-out, ease-in-out,
+            cubic-bezier(), steps().
+
+         */
+
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            color: white;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #color {
+            transition: background-color 1s ease;
+        }
+
+        #color:hover {
+            background-color: orange;
+        }
+
+        #size {
+            transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+        }
+
+        #size:hover {
+            width: 220px;
+            height: 220px;
+        }
+
+        #radius {
+            transition: border-radius 0.8s;
+        }
+
+        #radius:hover {
+            border-radius: 50%;
+        }
+
+        #delay {
+            transition: transform 0.6s ease-out 0.5s;
+        }
+
+        #delay:hover {
+            transform: translateX(40px) rotate(45deg);
+        }
+
+        #bounce {
+            transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        #bounce:hover {
+            transform: scale(1.4);
+        }
+
+        #steps {
+            transition: transform 1s steps(5);
+        }
+
+        #steps:hover {
+            transform: translateX(60px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Hover Transitions</h2>
+        <p>Hover over each box.</p>
+        <div class="row">
+            <div class="col-md-4 text-center"><h4>Color</h4><div class="box" id="color">ease</div></div>
+            <div class="col-md-4 text-center"><h4>Size</h4><div class="box" id="size">ease-in-out</div></div>
+            <div class="col-md-4 text-center"><h4>Border radius</h4><div class="box" id="radius">0.8s</div></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-center"><h4>Delay</h4><div class="box" id="delay">0.5s delay</div></div>
+            <div class="col-md-4 text-center"><h4>Bounce (cubic-bezier)</h4><div class="box" id="bounce">bounce</div></div>
+            <div class="col-md-4 text-center"><h4>Steps</h4><div class="box" id="steps">steps(5)</div></div>
+        </div>
+    </div>
+</body>
+
+</html>
