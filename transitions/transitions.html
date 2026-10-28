@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transitions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <style>
+        /*
+
+            transition: property duration timing-function delay;
+            Animates a property smoothly between two states (e.g. normal -> :hover)
+            instead of jumping instantly. Hover over each box to see the effect.
+
+            Timing functions: ease, linear, ease-in, ease-out, ease-in-out,
+            cubic-bezier(...), steps(n)
+
+         */
+
+        .box {
+            width: 200px;
+            height: 150px;
+            background-color: blue;
+            color: white;
+            margin: 0 auto 20px;
+        }
+
+        .col-md-4 .thumbnail {
+            background-color: #000;
+            padding: 30px 15px 10px;
+        }
+
+        #colorChange {
+            transition: background-color 1s;
+        }
+
+        #colorChange:hover {
+            background-color: orange;
+        }
+
+        #sizeChange {
+            transition: width 0.8s, height 0.8s;
+        }
+
+        #sizeChange:hover {
+            width: 100%;
+            height: 200px;
+        }
+
+        #timingLinear {
+            transition: transform 2s linear;
+        }
+
+        #timingEaseInOut {
+            transition: transform 2s ease-in-out;
+        }
+
+        #timingLinear:hover,
+        #timingEaseInOut:hover {
+            transform: translateX(60px);
+        }
+
+        #delayed {
+            transition: transform 0.6s ease 0.5s, border-radius 0.6s ease 0.5s;
+        }
+
+        #delayed:hover {
+            transform: rotate(90deg);
+            border-radius: 50%;
+        }
+
+        #stepped {
+            transition: transform 1.5s steps(5);
+        }
+
+        #stepped:hover {
+            transform: translateX(60px);
+        }
+
+        #bounce {
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        #bounce:hover {
+            transform: scale(1.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="colorChange" class="box">Color (1s)</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="sizeChange" class="box">Width &amp; Height</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="timingLinear" class="box">Linear</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            &nbsp;
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="timingEaseInOut" class="box">Ease-in-out</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="delayed" class="box">Delay (0.5s)</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="stepped" class="box">Steps(5)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            &nbsp;
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div id="bounce" class="box">Cubic-bezier bounce</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
